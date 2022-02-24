@@ -1,28 +1,29 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-import time
-import math
 
-def calc(x):
-  return str(math.log(abs(12*math.sin(int(x)))))
 
-try: 
-    link = "http://suninjuly.github.io/explicit_wait2.html"
-    browser = webdriver.Chrome()
-    browser.get(link)
-    browser.implicitly_wait(5)
-    
-    button = WebDriverWait(browser, 12).until(EC.text_to_be_present_in_element((By.ID,'price'),'100'))
-    browser.find_element_by_css_selector('button.btn').click()
+link = "http://suninjuly.github.io/registration1.html"
+browser = webdriver.Chrome()
+browser.get(link)
+browser.implicitly_wait(5)
 
-    browser.find_element_by_css_selector('input[id="answer"]').send_keys(calc(int(browser.find_element_by_css_selector('span[id="input_value"]').text)))
+input_1 = browser.find_element_by_css_selector('input[placeholder="Input your first name"]')
+input_1.send_keys('Val')
 
-    browser.find_element_by_css_selector('button.btn')
-    time.sleep(100)
-    assert True == True
+input_2 = browser.find_element_by_css_selector('input[placeholder="Input your last name"]')
+input_2.send_keys('Val')
 
-finally:
-    #browser.quit()
-    pass
+input_3 = browser.find_element_by_css_selector('input[placeholder="Input your email"]')
+input_3.send_keys('Val')
+
+input_4 = browser.find_element_by_css_selector('input[placeholder="Input your phone:"]')
+input_4.send_keys('Val')
+
+input_5 = browser.find_element_by_css_selector('input[placeholder="Input your address:"]')
+input_5.send_keys('Val')
+
+button_1 = browser.find_element_by_tag_name('button')
+button_1.click()
+
+assert "Congratulations! You have successfully registered!" == browser.find_element_by_tag_name('h1').text
+
+browser.quit()
