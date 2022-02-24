@@ -25,8 +25,9 @@ class TestAbs(unittest.TestCase):
 
         button_1 = browser.find_element_by_tag_name('button')
         button_1.click()
-
-        self.assertEqual("Congratulations! You have successfully registered!", browser.find_element_by_tag_name('h1').text)
+        
+        assert "Congratulations! You have successfully registered!" == browser.find_element_by_tag_name('h1').text
+        browser.quit()
 
 
         
@@ -54,8 +55,9 @@ class TestAbs(unittest.TestCase):
         button_1 = browser.find_element_by_tag_name('button')
         button_1.click()
 
-        self.assertEqual("Congratulations! You have successfully registered!", browser.find_element_by_tag_name('h1').text)
 
+        assert "Congratulations! You have successfully registered!" == browser.find_element_by_tag_name('h1').text
+        browser.quit()
 
         
 if __name__ == "__main__":
